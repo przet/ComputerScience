@@ -23,41 +23,53 @@ val Q1test10 = is_older ((1,2,1),(2,1,4)) = true (* yet another variation of tes
 *)
 
 (* Tests for Question 2 *)
-(*
-val Q1test1 = number_in_month ([(2012,2,28),(2013,12,1)],2) = 1
-val Q1test2 = number_in_month ([(2012,3,28),(2013,12,1)],2) = 0
-val Q1test3 = number_in_month ([(2012,12,28),(2013,12,1)],12) = 2
-val Q1test4 = number_in_month ([],12) = 0
-*)
+val Q2test1 = number_in_month ([(2012,2,28),(2013,12,1)],2) = 1
+val Q2test2 = number_in_month ([(2012,3,28),(2013,12,1)],2) = 0
+val Q2test3 = number_in_month ([(2012,12,28),(2013,12,1)],12) = 2
+val Q2test4 = number_in_month ([],12) = 0
 
 (* Tests for Question 3 *)
-(*
 val Q3test1 = number_in_months ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4]) = 3
 val Q3test2 = number_in_months
 ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[8,11,10]) = 0
 val Q3test3 = number_in_months ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3]) = 2
 val Q3test4 = number_in_months
 ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,1,12,8,9]) = 3
-*)
 
 (* Tests for Question 4 *)
+val Q4test1 = dates_in_month ([(2012,2,28),(2013,12,1)],2) = [(2012,2,28)]
+val Q4test2 = dates_in_month ([(2012,2,28),(2013,12,1), (2015,2,4)],2) =
+  [(2012,2,28),(2015,2,4)]
+val Q4test3 = dates_in_month ([(2012,1,28),(2013,12,1), (2015,2,4)],2) =
+  [(2015,2,4)] 
+val Q4test4 = dates_in_month ([(2012,2,28),(2013,12,1), (2015,2,4)],1) = []
 
-val test4 = dates_in_month ([(2012,2,28),(2013,12,1)],2) = [(2012,2,28)]
+(* Tests for Question 5 *)
+
+val Q5test1 = dates_in_months ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4]) = [(2012,2,28),(2011,3,31),(2011,4,28)]
+val Q5test2 = dates_in_months
+([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[4,3,2]) =
+[(2011,4,28),(2011,3,31),(2012,2,28)]  (*Note it will fail the oringal order
+test (which is NOT explicitly asked for in THIS question*)
+
+(* Tests for Question 6 *)
+val Q6test1 = get_nth (["hi", "there", "how", "are", "you"], 2) = "there"
+val Q6test2 = get_nth (["hi", "there", "how", "are", "you"], 5) = "you"
+val Q6test3 = get_nth (["hi", "there", "how", "are", "you"], 3) = "how"
+val Q6test4 = get_nth ([], 3) = "string list is empty"
+
+(* Tests for Question 7 *)
+val Q7test1 = date_to_string (2013, 6, 1) = "June 1, 2013"
+val Q7test2 = date_to_string (1991, 3, 25) = "March 25, 1991"
 
 (*
-
-val test5 = dates_in_months ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4]) = [(2012,2,28),(2011,3,31),(2011,4,28)]
-
-val test6 = get_nth (["hi", "there", "how", "are", "you"], 2) = "there"
-
-val test7 = date_to_string (2013, 6, 1) = "June 1, 2013"
-
-val test8 = number_before_reaching_sum (10, [1,2,3,4,5]) = 3
-
+(* Tests for Question 8 *)
+val Q8test1 = number_before_reaching_sum (10, [1,2,3,4,5]) = 3
+val Q8test2 = number_before_reaching_sum (15, [2,5,1,2,9,8,7]) = 4
 val test9 = what_month 70 = 3
 
 val test10 = month_range (31, 34) = [1,2,2,2]
 
 val test11 = oldest([(2012,2,28),(2011,3,31),(2011,4,28)]) = SOME (2011,3,31)
 
-*)
+these are some additions*)
