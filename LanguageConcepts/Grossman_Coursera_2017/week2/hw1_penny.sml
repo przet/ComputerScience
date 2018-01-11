@@ -66,5 +66,54 @@ in
   Int.toString(#1 date)
 end
 
+(* Q8 *) 
+fun number_before_reaching_sum(sum : int, intList: int list)=
+  if null intList 
+  then 0
+  else
+(* Given the problem statement, we need an int list of size at least two
+* (although we shall see in the comment immediately following that it will be
+* actually three or more),(otherwise what does the "first n+1" elements mean?
+*
+* The assumption that the entire int list sums to more than sum value passed in
+* implies that we need only concern ourselves with int list of SIZE THREE or
+* more actually. Well actually, we should code for it, but simply that if list
+* size is two exactly, the answer,n, is one. In fact this can make up a
+* condition for an if statement*)
+    let val n = 0
+    in 
+      if tl(tl intList) = [] (* i.e if intList is size two exactly*)
+      then n+1
+      else let (*new function so as not to keep checking the above step*)
+        fun number_before_reaching_sum_listsize_3plus(sum : int, intList : int list,
+          n : int)=
+          let val priorSum = hd intList + hd (tl intList)
+          in
+            if null (tl (tl intList))
+            then 0
+            else
+          if priorSum < sum andalso hd ( tl (tl intList)) >=
+          sum - priorSum
+            then
+               n 
+            else
+               number_before_reaching_sum_listsize_3plus(sum, tl intList, n + 1) 
+          end
+           in
+             number_before_reaching_sum_listsize_3plus(sum, intList, 2)
+           end
+    end
+
+
+    
+
+
+
+
+
+    
+    
+
+  
 
 
