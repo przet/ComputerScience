@@ -56,18 +56,22 @@ test (which is NOT explicitly asked for in THIS question*)
 val Q6test1 = get_nth (["hi", "there", "how", "are", "you"], 2) = "there"
 val Q6test2 = get_nth (["hi", "there", "how", "are", "you"], 5) = "you"
 val Q6test3 = get_nth (["hi", "there", "how", "are", "you"], 3) = "how"
-val Q6test4 = get_nth ([], 3) = "string list is empty"
+val Q6test4 = get_nth (["hi", "there", "how", "are", "you"], 7) = "string list is empty"
+(* we are told not to worry about the case when the list has too few
+elements, hence expected result of test 4 *)
+val Q6test5 = get_nth ([], 3) = "string list is empty"
 
 (* Tests for Question 7 *)
 val Q7test1 = date_to_string (2013, 6, 1) = "June 1, 2013"
 val Q7test2 = date_to_string (1991, 3, 25) = "March 25, 1991"
 
 (* Tests for Question 8 *)
-val Q8test1 = number_before_reaching_sum (10, [1,2,3,4,5]) = 3
-val Q8test2 = number_before_reaching_sum (15, [2,5,1,2,9,8,7]) = 4
-val Q8test3 = number_before_reaching_sum (4, [1,4]) = 1 (* Testing that the 2
+val Q8test1 = number_before_reaching_sum (10, [1,2,3,4,5]) (*= 3 *)
+val Q8test2 = number_before_reaching_sum (15, [2,5,1,2,9,8,7])  (*=4*)
+val Q8test3 = number_before_reaching_sum (4, [1,4])  (*=1*) (* Testing that the 2
 element list case works corectly *)
-val Q8test4 = number_before_reaching_sum (8, [1,2,3,4,5]) = 4
+
+val Q8test4 = number_before_reaching_sum (8, [1,2,3,4,5])  (*=4*)
 (*
 val test9 = what_month 70 = 3
 
