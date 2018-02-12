@@ -67,55 +67,23 @@ in
 end
 
 (* Q8 *) 
-(* Given the problem statement, we need an int list of size at least two
-* (although we shall see in the comment immediately following that it will be
-* actually three or more),(otherwise what does the "first n+1" elements mean?
-*
-* The assumption that the entire int list sums to more than sum value passed in
-* implies that we need only concern ourselves with int list of SIZE THREE or
-* more actually. Well actually, we should code for it, but simply that if list
-* size is two exactly, the answer,n, is one. In fact this can make up a
-* condition for an if statement*)
-
-fun number_before_reaching_sum(sum : int, intList: int list)=
-if null intList
-then 0
+fun get_index_and_element(index : int, xs : int list) =
+if null xs
+then (0,0)
+else if null (tl xs)
+then
+(index,(hd xs))
 else
-  let
-   fun get_nth_int(xs : int list, m: int)=
-  if null xs
-  then 0 (* This is actually good here *)
-  else
-    get_nth_int(tl xs, m-1)
-  in
-    let fun sum_to_n(ys : int list, r: int)=
-    let val nth_int = get_nth_int(ys,r)
-    in
-    if null ys
-    then 0
-    else
-      if r = 0
-      then
-        get_nth_int(ys,1)
-      else
-      nth_int+sum_to_n(ys, r-1)
-    end
-    in
-      let fun test_all(n : int)=
-      let val sum_n =(sum_to_n(intList,n),sum_to_n(intList,n+1)) 
-      in
-      if #1 sum_n  < sum andalso #2 sum_n >=sum
-      then
-        n
-      else
-        let val counter = n+1
-        in test_all(counter) end
-      end
-      in
-        test_all(1)
-      end
-    end
-  end
+let val count = 1
+in
+if count = index
+then (index, hd(xs))
+else
+let val count = count + 1
+in
+get_index_and_element(index-1, tl(xs))
+end
+end
 
 
  
