@@ -66,22 +66,15 @@ val Q7test1 = date_to_string (2013, 6, 1) = "June 1, 2013"
 val Q7test2 = date_to_string (1991, 3, 25) = "March 25, 1991"
 
 (* Tests for Question 8 *)
-(* First I want to create a test (yes its TDD), to test my sub-problem
-of writing a function that returns an index, and the (input) list element at that index*)
-val Q8SubTest1 = get_index_and_element(4, [1,3,5,6]) = (4,6)
-val Q8SubTest2 = get_index_and_element(1, [1,3,5,6]) = (1,1)
-val Q8SubTest3 = get_index_and_element(2, [1,3,5,6]) = (2,3)
-val Q8SubTest4 = get_index_and_element(3, [1,3,5,6]) = (3,5)
-
-(*
-val Q8test1 = number_before_reaching_sum (10, [1,2,3,4,5]) (*= 3 *)
-val Q8test2 = number_before_reaching_sum (15, [2,5,1,2,9,8,7])  (*=4*)
-val Q8test3 = number_before_reaching_sum (4, [1,4])  (*=1*) (* Testing that the 2
+(* First test a function that counts the number of recursions until
+a certain condition is met: say hd of input list = 100. This is actually a recursion counter plus 1, for we would count one if no recursion
+is necessary
+*)
+val Q8test1 = number_before_reaching_sum (10, [1,2,3,4,5])= 3 
+val Q8test2 = number_before_reaching_sum (15, [2,5,1,2,9,8,7]) =4
+val Q8test3 = number_before_reaching_sum (4, [1,4])  =1 (* Testing that the 2
 element list case works corectly *)
-*)
-(*
-val Q8test4 = number_before_reaching_sum (8, [1,2,3,4,5])  (*=4*)
-*)
+val Q8test4 = number_before_reaching_sum (8, [1,2,3,4,5])  =3
 (*
 val test9 = what_month 70 = 3
 
