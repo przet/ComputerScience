@@ -65,34 +65,14 @@ in
   get_nth(monthStringList, #2 date) ^ " " ^ Int.toString(#3 date) ^ "," ^ " " ^
   Int.toString(#1 date)
 end
-
-(* Q8 *) 
-fun get_index_and_element(index : int, xs : int list) =
+(*Q8*)
+fun number_before_reaching_sum(sum : int, xs : int list) =
 if null xs
-then (0,0)
-else if null (tl xs)
-then
-(index,(hd xs))
+then 0 (*Again I need to use options here*)
+else let val count = 1 in
+if hd xs >= sum
+then count-1
 else
-let val count = 1
-in
-if count = index
-then (index, hd(xs))
-else
-let val count = count + 1
-in
-get_index_and_element(index-1, tl(xs))
-end
+count + number_before_reaching_sum(sum- (hd xs), tl xs)
 end
 
-
- 
-  
-      
-
-  
-        
-
-
-    
-  
