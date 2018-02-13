@@ -88,7 +88,17 @@ in
 number_before_reaching_sum(day_of_year, month_list) + 1
 end
 
+(*Q10*)
 
+fun month_range(day1 : int, day2 : int)=
+if day1 > day2
+then []
+else if
+day1 = day2
+then
+what_month(day1)::[]
+else
+what_month(day1)::month_range(day1 + 1, day2)
 
 
 
