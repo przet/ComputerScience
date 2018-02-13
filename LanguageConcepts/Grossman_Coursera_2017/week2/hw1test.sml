@@ -76,6 +76,12 @@ val Q8test4 = number_before_reaching_sum (8, [1,2,3,4,5])  =3
 
 val Q9test1 = what_month 70 = 3
 val Q9test2 = what_month 33 = 2
+val Q9test3 = what_month 80 = 3
+val Q9test4 = what_month 59 = 2
+val Q9test5 = what_month (59 + 31) = 3
+val Q9test6 = what_month (59 + 31+30) = 4
+val Q9test7 = what_month (59 + 31+14) = 4
+val Q9test8 = what_month (365) = 12
 
 (*
 val test10 = month_range (31, 34) = [1,2,2,2]
