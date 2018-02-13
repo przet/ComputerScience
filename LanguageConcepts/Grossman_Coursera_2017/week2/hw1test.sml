@@ -83,9 +83,10 @@ val Q9test6 = what_month (59 + 31+30) = 4
 val Q9test7 = what_month (59 + 31+14) = 4
 val Q9test8 = what_month (365) = 12
 
-(*
+(* Tests for Question 10 *)
 val test10 = month_range (31, 34) = [1,2,2,2]
 
+(*
 val test11 = oldest([(2012,2,28),(2011,3,31),(2011,4,28)]) = SOME (2011,3,31)
 
 these are some additions*)
