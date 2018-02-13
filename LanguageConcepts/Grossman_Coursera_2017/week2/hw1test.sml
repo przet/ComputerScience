@@ -71,9 +71,13 @@ val Q8test2 = number_before_reaching_sum (15, [2,5,1,2,9,8,7]) =4
 val Q8test3 = number_before_reaching_sum (4, [1,4])  =1 (* Testing that the 2
 element list case works corectly *)
 val Q8test4 = number_before_reaching_sum (8, [1,2,3,4,5])  =3
-(*
-val test9 = what_month 70 = 3
 
+(* Tests for Question 9 *)
+
+val Q9test1 = what_month 70 = 3
+val Q9test2 = what_month 33 = 2
+
+(*
 val test10 = month_range (31, 34) = [1,2,2,2]
 
 val test11 = oldest([(2012,2,28),(2011,3,31),(2011,4,28)]) = SOME (2011,3,31)
