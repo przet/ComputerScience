@@ -79,12 +79,11 @@ end
 (*Q9*)
 
 fun what_month (day_of_year : int) =
-let val month_list = [31,31,31,31,31,31,31,31,31,31,31,31]
-(*TODO populate with real dates, ignorning leap year, or
-nut out if it matters*)
-
-
- 
+let val month_list = [31,28,31,30,31,30,31,31,30,31,30,31]
+(*TODO I have populated with real days in a month 
+(non-leap years). But I _think_ it might be fine with all
+31's...come back for interest
+*)
 in
 number_before_reaching_sum(day_of_year, month_list) + 1
 end
@@ -95,18 +94,6 @@ end
 
 
 
-	(*let fun create_month_list(x : int)=
-	let val new_x = x - 31
-	in
-	if x = 31 then
-	[x]   
-	else
-	create_month_list(new_x)@ [new_x]
-	end
-	in
-	create_month_list(day_of_year)
-	end
-*)
 
 
 
