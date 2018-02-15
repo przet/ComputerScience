@@ -105,13 +105,14 @@ fun oldest(dates : (int*int*int) list)=
 if null dates
 then NONE
 else
-	let val tl_ans =oldest(tl dates)
-	in
-		if is_older(hd dates, tl_ans)
-		then SOME tl_ans
-		else SOME hd dates
-	end
-
+    let fun older_date(date1 : (int*int*int), date2: (int*int*int))=
+    if is_older(date1, date2)
+    then date2 
+    else date1
+    in
+      
+      
+      
 
 
 
