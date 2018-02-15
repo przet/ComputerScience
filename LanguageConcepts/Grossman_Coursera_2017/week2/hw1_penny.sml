@@ -104,12 +104,21 @@ what_month(day1)::month_range(day1 + 1, day2)
 fun oldest(dates : (int*int*int) list)=
 if null dates
 then NONE
+else if null (tl dates)
+then SOME (hd dates)
 else
-    let fun older_date(date1 : (int*int*int), date2: (int*int*int))=
-    if is_older(date1, date2)
-    then date2 
-    else date1
+  let fun older_date(date1: (int*int*int), date2: (int*int*int))=
+  if is_older(date1, date2)
+  then date1
+  else date2
+  in
+    let val pairwise_compare_result = older_date(hd dates, hd(tl dates))
     in
+      oldest(pairwise_compare_result::tl(tl dates))
+    end
+  end
+  
+
       
       
       
