@@ -100,6 +100,18 @@ what_month(day1)::[]
 else
 what_month(day1)::month_range(day1 + 1, day2)
 
+(*Q11*)
+fun oldest(dates : (int*int*int) list)=
+if null dates
+then NONE
+else
+	let val tl_ans =oldest(tl dates)
+	in
+		if is_older(hd dates, tl_ans)
+		then SOME tl_ans
+		else SOME hd dates
+	end
+
 
 
 
