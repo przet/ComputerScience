@@ -119,22 +119,124 @@ else
   end
   
 (*Q12*)
-(*First work on the remove_duplicates function*)
-fun remove_duplicates(xs : int list)=
-if null xs
-then NONE
+(*A subproblem is to remove duplicates. A subproblem to that
+* is to check if an int is in an int list *)
+
+fun get_nth_for_intList(intList : int list, n : int)=
+if null intList
+then 0 
 else
-	if hd xs <> hd (tl xs)
-	then SOME ((hd xs)::[])
-	else
-	remove_duplicates(tl xs)
+  if n = 1
+  then hd intList
+  else get_nth_for_intList(tl intList, n-1)
+
+fun is_number_in_list(number : int, xs : int list)=
+  if null xs
+  then false (*Bad but something is up with my option foo*)
+  else
+    let val e = number = hd xs orelse is_number_in_list(number, tl xs)
+    in
+      e
+    end
+
+
+fun create_new_list(x : int)=
+  x::[]
+
+
+fun is_list_ordered(xs : int list)=
+if null xs
+then false
+else if null (tl xs)
+then true
+else
+  let val pairwise_comp = hd(tl xs)-(hd xs) >= 0
+  in
+    pairwise_comp andalso is_list_ordered(tl xs)
+  end
+
+fun order_list(xs : int list)=
+  if null xs
+  then []
+  else if null (tl xs)
+  then xs
+  else if is_list_ordered(xs)
+  then xs
+  else 
+    if hd xs > hd (tl xs)
+    then [hd(tl xs)]@[hd xs]@order_list(tl(tl xs))
+    else order_list([hd xs]@order_list(tl xs))
+
+fun list_from_index_on(n : int, xs: int list)=
+  if null xs
+  then []
+  else
+    let val tl_call_count = 1
+    in
+      if tl_call_count = n
+      then
+        get_nth_for_intList(xs,n)::(tl xs)
+      else list_from_index_on(n-1, tl (xs))
+    end
+
+
+fun count_duplicates(xs:int list)=
+  (*assume ordered list, but we can add a check for that *)
+if null xs orelse null (tl xs)
+then 0
+else
+  let val count = 1
+  in
+    if hd(tl xs) = hd xs
+    then count + count_duplicates(tl (tl xs))
+    else count
+  end
+
+fun find_n (xs: int list, n :int)=
+if null xs
+then false
+else
+  hd xs = n orelse find_n(tl xs, n)
+
+fun count_duplicates_of_n(xs : int list, n : int)=
+if null xs
+then 0
+else if not(find_n(xs,n))
+then 0
+else 
+  let val count = 1
+  in
+  if hd xs = n
+  then    
+      count + count_duplicates_of_n(tl xs, n)
+     
+  else
+    count
+  end
+
       
-      
-      
-
-
-
-
-
+fun remove_duplicates(xs: int list)=
+  (* assume int list ordered (and it will be when we make it local to
+  * the final solution function *)
+  if null xs
+  then []
+  else
+    if is_number_in_list(hd xs, tl xs)
+    then 
+      let val hdDupes = count_duplicates_of_n(xs,hd xs)
+      in
+        [hd xs]@remove_duplicates(list_from_index_on(hdDupes+1, xs))
+      end
+    else
+      [hd xs]@remove_duplicates(tl xs)
+ 
+fun number_in_months_challenge(dates : (int*int*int)list, months : int list)=
+let val ordered_months = order_list(months)
+in
+  let val unique_list = remove_duplicates(ordered_months)
+  in
+    number_in_months(dates, unique_list)
+  end
+end
 
 
