@@ -118,7 +118,16 @@ else
     end
   end
   
-
+(*Q12*)
+(*First work on the remove_duplicates function*)
+fun remove_duplicates(xs : int list)=
+if null xs
+then NONE
+else
+	if hd xs <> hd (tl xs)
+	then SOME ((hd xs)::[])
+	else
+	remove_duplicates(tl xs)
       
       
       
