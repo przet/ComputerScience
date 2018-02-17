@@ -93,4 +93,8 @@ val test11 = oldest([(2012,2,28),(2011,3,31),(2011,4,28)])  = SOME (2011,3,31)
 Challenge Problems*)
 
 (* Tests for Question 12 *)
-val Q12test1 = remove_duplicates ([2,3,4,3]) = SOME([2,3,4]) 
+val Q12test1 = number_in_months_challenge
+([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4,2]) = 3 
+val Q12test2 = number_in_months_challenge
+([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,2,3,5,5]) = 2
+
