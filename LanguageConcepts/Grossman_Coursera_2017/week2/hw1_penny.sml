@@ -239,4 +239,11 @@ in
   end
 end
 
-
+fun dates_in_months_challenge(dates : (int*int*int)list, months : int list)=
+let val ordered_months = order_list(months)
+in
+  let val unique_list = remove_duplicates(ordered_months)
+  in
+    dates_in_months(dates, unique_list)
+	end
+	end
