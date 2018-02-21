@@ -100,3 +100,23 @@ val Q12test2 = number_in_months_challenge
 
 val Q12test3 = dates_in_months_challenge ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4,4]) = [(2012,2,28),(2011,3,31),(2011,4,28)]
 val Q12test4 = dates_in_months_challenge ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4,4,2,2,3,3]) = [(2012,2,28),(2011,3,31),(2011,4,28)]
+
+
+(* Tests for Question 13 *)
+(*Non Leap Years - list of leap years from accuraryproject.org*)
+val Q13test1 = reasonable_date((1951,1,32)) = false
+val Q13test2 = reasonable_date((1951,1,31)) = true 
+val Q13test3 = reasonable_date((1951,2,29)) = false
+val Q13test4 = reasonable_date((1951,2,28)) = true
+val Q13test5 = reasonable_date((1951,1,21)) = true 
+val Q13test6 = reasonable_date((1951,4,31)) = false
+
+(* Leap Years *)
+val Q13test7 = reasonable_date((1952,4,31)) = false
+val Q13test8 = reasonable_date((1952,1,31)) = true
+val Q13test9 = reasonable_date((1952,3,31)) = true
+val Q13test10 = reasonable_date((1952,2,29)) = true
+val Q13test11 = reasonable_date((1952,13,29)) = false
+val Q13test12 = reasonable_date((1952,0,29)) = false
+
+
