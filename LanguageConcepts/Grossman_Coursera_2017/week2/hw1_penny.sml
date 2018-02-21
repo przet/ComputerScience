@@ -252,13 +252,20 @@ in
 fun reasonable_date(date : int*int*int)=
 if #1 date < 1
 then false
-else if #3 date < 1 orelse #3 date > 12
+else if #2 date < 1 orelse #2 date > 12
 then false
-else let val 31DayMonthList = [1,3,5,7,8,10,12]
+else let val ThirtyOneDayMonthList = [1,3,5,7,8,10,12]
 in
-  if find_n(31DayMonthList,#2 date)
+  if find_n(ThirtyOneDayMonthList,#2 date)
   then #3 date <= 31
-  else let val 30DayMonthList = [4,6,9,11]
-  in if find_n(30DayMonthList, #2date)
+  else let val ThirtyDayMonthList = [4,6,9,11]
+  in if find_n(ThirtyDayMonthList, #2date)
   then  #3 date <=30 
-  else if (*I need to write is_divisible function here*) 
+  else if #1 date mod 4 = 0 orelse #1 date mod 400 = 0 andalso not(#1 date mod
+  100 = 0)
+       then #3 date <= 29
+       else
+         #3 date <= 28
+       end
+     end
+     
