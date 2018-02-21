@@ -247,3 +247,18 @@ in
     dates_in_months(dates, unique_list)
 	end
 	end
+
+(* Q13 *)
+fun reasonable_date(date : int*int*int)=
+if #1 date < 1
+then false
+else if #3 date < 1 orelse #3 date > 12
+then false
+else let val 31DayMonthList = [1,3,5,7,8,10,12]
+in
+  if find_n(31DayMonthList,#2 date)
+  then #3 date <= 31
+  else let val 30DayMonthList = [4,6,9,11]
+  in if find_n(30DayMonthList, #2date)
+  then  #3 date <=30 
+  else if (*I need to write is_divisible function here*) 
