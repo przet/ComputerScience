@@ -250,22 +250,35 @@ in
 
 (* Q13 *)
 fun reasonable_date(date : int*int*int)=
-if #1 date < 1
-then false
-else if #2 date < 1 orelse #2 date > 12
-then false
-else let val ThirtyOneDayMonthList = [1,3,5,7,8,10,12]
+let val year = #1 date
 in
-  if find_n(ThirtyOneDayMonthList,#2 date)
-  then #3 date <= 31
-  else let val ThirtyDayMonthList = [4,6,9,11]
-  in if find_n(ThirtyDayMonthList, #2date)
-  then  #3 date <=30 
-  else if #1 date mod 4 = 0 orelse #1 date mod 400 = 0 andalso not(#1 date mod
-  100 = 0)
-       then #3 date <= 29
+ if year < 1
+ then false
+ else
+  let val month = #2 date 
+  in
+   if month < 1 orelse month > 12
+   then false
+   else let val ThirtyOneDayMonthList = [1,3,5,7,8,10,12]
+   in
+     let val day = #3 date 
+     in
+      if find_n(ThirtyOneDayMonthList,month)
+      then 
+      day <= 31 
+      else let val ThirtyDayMonthList = [4,6,9,11]
+      in 
+       if find_n(ThirtyDayMonthList, month)
+       then  day <=30 
+       else if year mod 4 = 0 orelse year mod 400 = 0 andalso not(year mod
+               100 = 0)
+       then day <= 29
        else
-         #3 date <= 28
+         day <= 28
        end
      end
+     end
+     end
+end
+
      
