@@ -1,0 +1,4 @@
+datatype 'a option = NONE | SOME of 'a (* This is _exactly_ how options are
+defined in ml *)
+
+datatype 'a mylist = xs | 'a :: 'a mylist 
